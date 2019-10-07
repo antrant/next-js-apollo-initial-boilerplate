@@ -1,7 +1,7 @@
 {
   "name": "next-js-initial-boilerplate",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "author": "An Tran <antrant>",
   "license": "MIT",
   "scripts": {
@@ -20,13 +20,17 @@
     "graphql-tools": "^4.0.5",
     "next": "^9.0.8",
     "react": "^16.10.2",
-    "react-dom": "^16.10.2"
+    "react-dom": "^16.10.2",
+    "sequelize": "^5.19.3",
+    "sqlite3": "^4.1.0"
   },
   "devDependencies": {
     "@babel/node": "^7.6.2",
+    "@types/sequelize": "^4.28.5",
     "eslint": "^6.5.1",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-react": "^7.16.0",
-    "nodemon": "^1.19.3"
+    "nodemon": "^1.19.3",
+    "sequelize-cli": "^5.5.1"
   }
 }

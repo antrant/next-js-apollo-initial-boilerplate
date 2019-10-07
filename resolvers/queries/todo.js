@@ -1,5 +1,7 @@
 const todo = {
-  todos() {
+  todos(parent, args, {models}, info) {
+    console.log(models);
+
     return [
       {
         id: 'todoa',
