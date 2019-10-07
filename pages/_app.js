@@ -3,6 +3,7 @@ import App from 'next/app';
 import {ApolloProvider} from '@apollo/react-hooks';
 
 import withApollo from '../lib/with-apollo';
+import Layout from '../components/Layout';
 
 /**
  * Customization for Next.js App
@@ -28,7 +29,9 @@ class MyApp extends App {
     const {Component, pageProps, apollo} = this.props;
     return (
       <ApolloProvider client={apollo}>
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </ApolloProvider>
     );
   }

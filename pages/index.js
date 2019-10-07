@@ -1,5 +1,6 @@
-import TodoList from '../components/TodoList';
 import gql from 'graphql-tag';
+
+import TodoList from '../components/TodoList';
 
 const TODOS = gql`
     query {
@@ -11,17 +12,11 @@ const TODOS = gql`
 `;
 
 const Index = ({loading, error, data}) => {
-  if (loading) {
-    return <h2>Loading...</h2>;
-  }
-
-  if (error) {
-    return <h2>Error!</h2>;
-  }
-
   const {todos} = data;
 
-  return <TodoList todos={todos}/>;
+  return (
+    <TodoList todos={todos}/>
+  );
 };
 
 Index.getInitialProps = ({apolloClient}) => {
