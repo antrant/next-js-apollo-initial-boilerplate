@@ -13,5 +13,10 @@
     "next": "^9.0.8",
     "react": "^16.10.2",
     "react-dom": "^16.10.2"
+  },
+  "devDependencies": {
+    "eslint": "^6.5.1",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-react": "^7.16.0"
   }
 }
