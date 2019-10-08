@@ -1,10 +1,27 @@
 import PropTypes from 'prop-types';
+import {Paper, FormControlLabel, makeStyles, Checkbox} from '@material-ui/core';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    padding: theme.spacing(1, 2),
+    marginBottom: theme.spacing(1),
+  },
+}));
 
 const TodoList = ({todos}) => {
+  const classes = useStyles();
+
   return (
     <>
       {todos.map((todo) => (
-        <h2 key={todo.id}>{todo.title}</h2>
+        <Paper key={todo.id} className={classes.root}>
+          <FormControlLabel
+            value={todo.title}
+            control={<Checkbox color="primary" />}
+            label={todo.title}
+            labelPlacement="end"
+          />
+        </Paper>
       ))}
     </>
   );

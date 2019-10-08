@@ -1,24 +1,15 @@
 import {ListItemIcon, ListItemText, ListItem} from '@material-ui/core';
 import ViewListRoundedIcon from '@material-ui/icons/ViewListRounded';
-import AddCircleRoundedIcon from '@material-ui/icons/AddCircleRounded';
 import Link from 'next/link';
 
 const ItemList = () => (
   <div>
-    <Link href="/todo-list">
+    <Link href="/">
       <ListItem button component="a">
         <ListItemIcon>
           <ViewListRoundedIcon />
         </ListItemIcon>
-        <ListItemText primary="Ranking" />
-      </ListItem>
-    </Link>
-    <Link href="/create-todo">
-      <ListItem button component="a">
-        <ListItemIcon>
-          <AddCircleRoundedIcon />
-        </ListItemIcon>
-        <ListItemText primary="Tournament" />
+        <ListItemText primary="TODO List" />
       </ListItem>
     </Link>
   </div>

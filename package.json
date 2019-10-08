@@ -35,6 +35,7 @@
   },
   "devDependencies": {
     "@babel/node": "^7.6.2",
+    "@types/material-ui": "^0.21.7",
     "@types/sequelize": "^4.28.5",
     "eslint": "^6.5.1",
     "eslint-config-google": "^0.14.0",
