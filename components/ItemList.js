@@ -1,5 +1,6 @@
 import {ListItemIcon, ListItemText, ListItem} from '@material-ui/core';
 import ViewListRoundedIcon from '@material-ui/icons/ViewListRounded';
+import InfoRoundedIcon from '@material-ui/icons/InfoRounded';
 import Link from 'next/link';
 
 const ItemList = () => (
@@ -8,6 +9,14 @@ const ItemList = () => (
       <ListItem button component="a">
         <ListItemIcon>
           <ViewListRoundedIcon />
+        </ListItemIcon>
+        <ListItemText primary="TODO List" />
+      </ListItem>
+    </Link>
+    <Link href="/about">
+      <ListItem button component="a">
+        <ListItemIcon>
+          <InfoRoundedIcon />
         </ListItemIcon>
         <ListItemText primary="TODO List" />
       </ListItem>

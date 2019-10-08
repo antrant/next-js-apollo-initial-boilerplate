@@ -1,11 +1,6 @@
 const todo = {
-  createTodo() {
-    // todo: Create a todo
-
-    return {
-      id: 'newTask',
-      title: 'New Task',
-    };
+  async createTodo(parent, args, {models}, info) {
+    return await models.Todo.create(args.data);
   },
 };
 
