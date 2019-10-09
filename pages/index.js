@@ -11,6 +11,7 @@ import AddIcon from '@material-ui/icons/Add';
 import {useMutation} from '@apollo/react-hooks';
 
 import TodoList from '../components/TodoList';
+import {useState} from 'react';
 
 // Queries
 const GET_TODOS = gql`
@@ -50,6 +51,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Index = ({loading, error, data}) => {
   const {todos} = data;
+  const [title, setTitle] = useState();
 
   if (loading) {
     return <Typography>Loading...</Typography>;
@@ -61,30 +63,21 @@ const Index = ({loading, error, data}) => {
 
   const classes = useStyles();
 
-  let formElements = {};
-
-  const setFormElements = (node) => {
-    formElements[node.name] = node;
-  };
-
-  const getFormData = () => {
-    let formData = {};
-
-    for (let [name, element] of Object.entries(formElements)) {
-      formData[name] = element.value;
-    }
-
-    return formData;
-  };
-
   const [addTodo, {data: resData}] = useMutation(ADD_TODO);
 
   return (
     <Container maxWidth={'sm'}>
       <form onSubmit={(event) => {
-        addTodo({variables: {data: getFormData()}});
-        formElements['title'].value = '';
         event.preventDefault();
+
+        addTodo({
+          variables: {
+            data: {
+              title,
+            },
+          },
+        },
+        );
       }}>
         <TextField
           id="outlined-dense"
@@ -92,8 +85,9 @@ const Index = ({loading, error, data}) => {
           className={clsx(classes.textField, classes.dense)}
           margin="dense"
           variant="outlined"
-          name='title'
-          ref={setFormElements}
+          onChange={(event) => {
+            setTitle(event.target.value);
+          }}
         />
         <Fab color="primary"
           aria-label="add"

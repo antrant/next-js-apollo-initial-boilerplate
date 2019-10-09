@@ -12,9 +12,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     title: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
     completed: {
       type: DataTypes.BOOLEAN,
+      defaultValue: false,
     },
     createdAt: {
       allowNull: false,
