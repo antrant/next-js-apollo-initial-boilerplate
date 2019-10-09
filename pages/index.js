@@ -19,6 +19,7 @@ const GET_TODOS = gql`
         todos {
             id
             title
+            completed
         }
     }
 `;
@@ -51,7 +52,8 @@ const useStyles = makeStyles((theme) => ({
 
 const Index = ({loading, error, data}) => {
   const {todos} = data;
-  const [title, setTitle] = useState();
+
+  const [title, setTitle] = useState('');
 
   if (loading) {
     return <Typography>Loading...</Typography>;
@@ -70,14 +72,17 @@ const Index = ({loading, error, data}) => {
       <form onSubmit={(event) => {
         event.preventDefault();
 
-        addTodo({
-          variables: {
-            data: {
-              title,
+        if (title) {
+          addTodo({
+            variables: {
+              data: {
+                title,
+              },
             },
-          },
-        },
-        );
+          });
+
+          setTitle('');
+        }
       }}>
         <TextField
           id="outlined-dense"
@@ -88,6 +93,7 @@ const Index = ({loading, error, data}) => {
           onChange={(event) => {
             setTitle(event.target.value);
           }}
+          value={title}
         />
         <Fab color="primary"
           aria-label="add"

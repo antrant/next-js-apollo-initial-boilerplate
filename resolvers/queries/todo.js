@@ -1,16 +1,7 @@
+import {resolver} from 'graphql-sequelize';
+
 const todo = {
-  todos(parent, args, {models}, info) {
-    return [
-      {
-        id: 'todoa',
-        title: 'Do task A',
-      },
-      {
-        id: 'todob',
-        title: 'Do task B',
-      },
-    ];
-  },
+  todos: resolver((parent, args, {models}, info) => models.Todo),
 };
 
 export default todo;

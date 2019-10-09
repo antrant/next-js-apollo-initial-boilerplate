@@ -20,6 +20,7 @@ const TodoList = ({todos}) => {
             control={<Checkbox color="primary" />}
             label={todo.title}
             labelPlacement="end"
+            checked={todo.completed}
           />
         </Paper>
       ))}
