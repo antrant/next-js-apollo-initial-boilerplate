@@ -7,6 +7,8 @@ import {
   Button,
   Grid,
 } from '@material-ui/core';
+import {useMutation} from '@apollo/react-hooks';
+import gql from 'graphql-tag';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,8 +20,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const DELETE_TODO = gql`
+    mutation DeleteTodo($where: JSON){
+        deleteTodo(where: $where)
+    }
+`;
+
 const TodoList = ({todos}) => {
   const classes = useStyles();
+
+  const [deleteTodo] = useMutation(DELETE_TODO);
 
   return (
     <>
@@ -36,7 +46,18 @@ const TodoList = ({todos}) => {
               />
             </Grid>
             <Grid item xs={2}>
-              <Button size="small" className={classes.deleteButton}>
+              <Button size="small"
+                className={classes.deleteButton}
+                onClick={(event) => {
+                  deleteTodo({
+                    variables: {
+                      where: {
+                        id: todo.id,
+                      },
+                    },
+                  });
+                }}
+              >
                 Delete
               </Button>
             </Grid>

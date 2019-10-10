@@ -9,5 +9,6 @@ type Todo {
 }
 
 type Mutation {
-    createTodo(data: JSON): Todo
+    createTodo(data: JSON): Todo,
+    deleteTodo(where: JSON): Int,
 }
