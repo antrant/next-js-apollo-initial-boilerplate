@@ -8,7 +8,7 @@ import {
 } from '@material-ui/core';
 import clsx from 'clsx';
 import AddIcon from '@material-ui/icons/Add';
-import {useMutation} from '@apollo/react-hooks';
+import {useMutation, useQuery} from '@apollo/react-hooks';
 
 import TodoList from '../components/TodoList';
 import {useState} from 'react';
@@ -30,6 +30,7 @@ const ADD_TODO = gql`
         createTodo(data: $data){
             id
             title
+            completed
         }
     }
 `;
@@ -50,8 +51,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Index = ({loading, error, data}) => {
-  const {todos} = data;
+const Index = () => {
+  const {loading, error, data} = useQuery(GET_TODOS);
 
   const [title, setTitle] = useState('');
 
@@ -63,9 +64,19 @@ const Index = ({loading, error, data}) => {
     return <Typography>Error!</Typography>;
   }
 
+  const {todos} = data;
   const classes = useStyles();
 
-  const [addTodo, {data: resData}] = useMutation(ADD_TODO);
+  const [addTodo] = useMutation(ADD_TODO, {
+    update(cache, {data: {createTodo}}) {
+      const {todos} = cache.readQuery({query: GET_TODOS});
+
+      cache.writeQuery({
+        query: GET_TODOS,
+        data: {todos: [...todos, createTodo]},
+      });
+    },
+  });
 
   return (
     <Container maxWidth={'sm'}>
@@ -107,8 +118,8 @@ const Index = ({loading, error, data}) => {
   );
 };
 
-Index.getInitialProps = ({apolloClient}) => {
-  return apolloClient.query({query: GET_TODOS});
-};
+// Index.getInitialProps = ({apolloClient}) => {
+//   return apolloClient.query({query: GET_TODOS});
+// };
 
 export default Index;
