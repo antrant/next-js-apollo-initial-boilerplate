@@ -52,20 +52,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Index = () => {
-  const {loading, error, data} = useQuery(GET_TODOS);
-
-  const [title, setTitle] = useState('');
-
-  if (loading) {
-    return <Typography>Loading...</Typography>;
-  }
-
-  if (error) {
-    return <Typography>Error!</Typography>;
-  }
-
-  const {todos} = data;
   const classes = useStyles();
+  const {loading, error, data} = useQuery(GET_TODOS);
+  const [title, setTitle] = useState('');
 
   const [addTodo] = useMutation(ADD_TODO, {
     update(cache, {data: {createTodo}}) {
@@ -77,6 +66,16 @@ const Index = () => {
       });
     },
   });
+
+  if (loading) {
+    return <Typography>Loading...</Typography>;
+  }
+
+  if (error) {
+    return <Typography>Error!</Typography>;
+  }
+
+  const {todos} = data;
 
   return (
     <Container maxWidth={'sm'}>

@@ -18,7 +18,7 @@ const ItemList = () => (
         <ListItemIcon>
           <InfoRoundedIcon />
         </ListItemIcon>
-        <ListItemText primary="TODO List" />
+        <ListItemText primary="About" />
       </ListItem>
     </Link>
   </div>
