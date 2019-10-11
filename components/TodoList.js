@@ -8,7 +8,7 @@ import {
   Grid,
 } from '@material-ui/core';
 import {useMutation} from '@apollo/react-hooks';
-import gql from 'graphql-tag';
+import {DELETE_TODO, GET_TODOS} from '../document-nodes/todo';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,12 +19,6 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(1),
   },
 }));
-
-const DELETE_TODO = gql`
-    mutation DeleteTodo($where: JSON){
-        deleteTodo(where: $where)
-    }
-`;
 
 const TodoList = ({todos}) => {
   const classes = useStyles();
@@ -54,6 +48,16 @@ const TodoList = ({todos}) => {
                       where: {
                         id: todo.id,
                       },
+                    },
+                    update(cache) {
+                      let {todos} = cache.readQuery({query: GET_TODOS});
+
+                      todos = todos.filter((t) => (t.id !== todo.id));
+
+                      cache.writeQuery({
+                        query: GET_TODOS,
+                        data: {todos},
+                      });
                     },
                   });
                 }}

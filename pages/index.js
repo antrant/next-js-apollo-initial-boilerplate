@@ -1,4 +1,3 @@
-import gql from 'graphql-tag';
 import {
   TextField,
   makeStyles,
@@ -12,28 +11,7 @@ import {useMutation, useQuery} from '@apollo/react-hooks';
 
 import TodoList from '../components/TodoList';
 import {useState} from 'react';
-
-// Queries
-const GET_TODOS = gql`
-    query {
-        todos {
-            id
-            title
-            completed
-        }
-    }
-`;
-
-// Mutations
-const ADD_TODO = gql`
-    mutation CreateTodo($data: JSON){
-        createTodo(data: $data){
-            id
-            title
-            completed
-        }
-    }
-`;
+import {ADD_TODO, GET_TODOS} from '../document-nodes/todo';
 
 // Styles
 const useStyles = makeStyles((theme) => ({
