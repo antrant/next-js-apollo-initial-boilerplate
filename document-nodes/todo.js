@@ -28,4 +28,15 @@ export const DELETE_TODO = gql`
     }
 `;
 
-export default {GET_TODOS, DELETE_TODO, ADD_TODO};
+export const UPDATE_TODO = gql`
+    mutation UpdateTodo($values: JSON, $options: JSON){
+        updateTodo(values: $values, options: $options)
+    }
+`;
+
+export default {
+  GET_TODOS,
+  DELETE_TODO,
+  ADD_TODO,
+  UPDATE_TODO,
+};

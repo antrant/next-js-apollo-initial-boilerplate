@@ -8,7 +8,7 @@ import {
   Grid,
 } from '@material-ui/core';
 import {useMutation} from '@apollo/react-hooks';
-import {DELETE_TODO, GET_TODOS} from '../document-nodes/todo';
+import {DELETE_TODO, GET_TODOS, UPDATE_TODO} from '../document-nodes/todo';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,6 +24,7 @@ const TodoList = ({todos}) => {
   const classes = useStyles();
 
   const [deleteTodo] = useMutation(DELETE_TODO);
+  const [updateTodo] = useMutation(UPDATE_TODO);
 
   return (
     <>
@@ -33,7 +34,33 @@ const TodoList = ({todos}) => {
             <Grid item xs={10}>
               <FormControlLabel
                 value={todo.title}
-                control={<Checkbox color="primary"/>}
+                control={
+                  <Checkbox
+                    color="primary"
+                    onChange={(event, checked) => {
+                      updateTodo({
+                        variables: {
+                          values: {
+                            completed: checked,
+                          },
+                          options: {
+                            where: {
+                              id: todo.id,
+                            },
+                          },
+                        },
+                        update(cache) {
+                          const {todos} = cache.readQuery({query: GET_TODOS});
+
+                          let updatedTodo = todos.find(
+                              ({id}) => (id === todo.id));
+
+                          updatedTodo.completed = checked;
+                        },
+                      });
+                    }}
+                  />
+                }
                 label={todo.title}
                 labelPlacement="end"
                 checked={todo.completed}

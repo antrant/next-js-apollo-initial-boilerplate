@@ -6,6 +6,10 @@ const todo = {
   async deleteTodo(parent, args, {models}) {
     return await models.Todo.destroy(args);
   },
+
+  async updateTodo(parent, {values, options}, {models}) {
+    return await models.Todo.update(values, options);
+  },
 };
 
 export default todo;
