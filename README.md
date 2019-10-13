@@ -15,19 +15,9 @@
 
 
 <!-- PROJECT LOGO -->
-<br />
-<p align="center">
-  <h3 align="center">Next.js + Apollo initial boilerplate</h3>
+# Next.js + Apollo initial boilerplate
 
-  <p align="center">
-    An initial boilerplate built with Next.js + Apollo (Server & Client) + GraphQL + Sequelize + Material UI
-    <br />
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
-  </p>
-</p>
+## An initial boilerplate built with Next.js + Apollo (Server & Client) + GraphQL + Sequelize + Material UI
 
 
 
@@ -53,9 +43,10 @@
 
 [![](static/images/app-screenshot.png)](https://github.com/antrant/next-js-apollo-initial-boilerplate)
 
-This repository is an initial point that help you can start a simple web application with Next.js and Apollo.
-The application includes both GraphQL API and Frontend layers in a single source code (although these layers should be separated in the big project).
-For database layer, the project use SQLite, which is easily be replaced with the other SQL databases such as MySQL, Postgres, MariaDB and Microsoft SQL Server.
+This repository is an initial point that helps you can start a simple web application with Next.js and Apollo.
+
+The application includes both GraphQL API and Frontend layers in a single source package (although these layers should be separated in the big project).
+For database layer, the project uses SQLite, which can be replaced with the other SQL databases such as MySQL, Postgres, MariaDB and Microsoft SQL Server.
 
 ### Built With
 * [Next.js](https://nextjs.org)
@@ -137,15 +128,13 @@ Distributed under the MIT License. See [`LICENSE`](https://github.com/antrant/ne
 <!-- CONTACT -->
 ## Contact
 
-An Tran - [@AnTranIO](https://twitter.com/AnTranIO)
+LinkedIn: [An Tran](https://www.linkedin.com/in/antrant)
 
 Project Link: [Next.js Apollo Initial Boilerplate](https://github.com/antrant/next-js-apollo-initial-boilerplate)
 
 
 
 <!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
-
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
