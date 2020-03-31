@@ -26,7 +26,7 @@
     "graphql-sequelize": "^9.3.6",
     "graphql-tag": "^2.10.1",
     "graphql-tools": "^4.0.5",
-    "next": "^9.0.8",
+    "next": "^9.3.2",
     "next-runtime-dotenv": "^1.2.0",
     "next-with-apollo": "^4.3.0",
     "prop-types": "^15.7.2",
